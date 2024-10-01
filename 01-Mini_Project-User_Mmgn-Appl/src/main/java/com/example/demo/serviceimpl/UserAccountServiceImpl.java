@@ -85,9 +85,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 		return false;
 	}
 
+	
+
+	
 	/*
 	 * @Override public boolean updateUserAccStatus(Integer userId, String status) {
-	 * 
 	 * 
 	 * try {
 	 * 
@@ -97,5 +99,6 @@ public class UserAccountServiceImpl implements UserAccountService {
 	 * 
 	 * return false; }
 	 */
+	 
 
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Accounts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>User Accounts</h2>
+		<br>
+		<!--<a th:href="@{/create-user}">Create User</a>-->
+		   <a th:href="@{/register}" class="btn btn-primary">Go to Register Page</a>
+		   <br><br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+		            <th>User ID</th>
+		            <th>Full Name</th>
+		            <th>Email</th>
+		            <th>Phone Number</th>
+		            <th>Gender</th>
+		            <th>Date of Birth</th>
+		            <th>SSN</th>
+		            <th>Active</th>
+		           <!-- <th>Created Date</th>
+		            <th>Updated Date</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="userAccount : ${userAccounts}">
+                    <td th:text="${userAccount.userId}"></td>
+                    <td th:text="${userAccount.fullName}"></td>
+                    <td th:text="${userAccount.email}"></td>
+                    <td th:text="${userAccount.phno}"></td>
+                    <td th:text="${userAccount.gender}"></td>
+                    <td th:text="${userAccount.dob}"></td>
+                    <td th:text="${userAccount.ssn}"></td>
+                    <td th:text="${userAccount.activeSw}"></td>
+                   <!-- <td th:text="${userAccount.createdDate}"></td>
+                    <td th:text="${userAccount.updatedDate}"></td>-->
+					
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
