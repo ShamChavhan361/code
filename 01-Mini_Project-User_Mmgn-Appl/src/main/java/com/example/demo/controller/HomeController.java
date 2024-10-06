@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.UserAccount;
+import com.example.demo.service.UserAccountService;
 import com.example.demo.serviceimpl.UserAccountServiceImpl;
 
 
 @Controller
 public class HomeController {
 	
+	
+	
+	@Autowired
+	private UserAccountService service;
 	
 	
 	/*
@@ -41,6 +46,28 @@ public class HomeController {
 		 model.addAttribute("user", new UserAccount()); 
 		 
 		 return "index";
+	}
+	
+	@PostMapping("/save-user")
+	public String submitBtn(@ModelAttribute("user") UserAccount user, Model model )
+	{
+		
+		System.out.println(user);
+		String msg = service.saveOrUpdateUserAcc(user);
+		model.addAttribute("msg", msg);
+		return "index";
+		
+	}
+	
+	@GetMapping("/view")
+	public String getAllUser(Model model)
+	{
+		
+	List<UserAccount> userList = service.getAllUserAccount();
+	model.addAttribute("users", userList);
+	
+		return "view-users";
+		
 	}
 	
 }

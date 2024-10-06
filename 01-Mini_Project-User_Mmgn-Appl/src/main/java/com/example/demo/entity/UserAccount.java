@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class UserAccount {
@@ -22,6 +23,7 @@ public class UserAccount {
 	
 	private Long phno;
 	private String gender;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
 	private Long ssn;
 	private String activeSw = "Y";

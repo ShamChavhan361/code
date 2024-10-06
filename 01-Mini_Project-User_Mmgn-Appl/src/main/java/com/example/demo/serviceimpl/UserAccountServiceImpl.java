@@ -79,26 +79,22 @@ public class UserAccountServiceImpl implements UserAccountService {
 	
 	}
 
+	
 	@Override
 	public boolean updateUserAccStatus(Integer userId, String status) {
-		// TODO Auto-generated method stub
+
+		try {
+
+			userRepo.updateUserAccountStatus(userId, status);
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return false;
 	}
-
-	
-
-	
-	/*
-	 * @Override public boolean updateUserAccStatus(Integer userId, String status) {
-	 * 
-	 * try {
-	 * 
-	 * userRepo.updateUserAccountStatus(userId, status);
-	 * 
-	 * return true; } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * return false; }
-	 */
+	 
 	 
 
 }
