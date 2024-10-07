@@ -5,13 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.UserAccount;
 import com.example.demo.service.UserAccountService;
-import com.example.demo.serviceimpl.UserAccountServiceImpl;
 
 
 @Controller
@@ -69,5 +71,29 @@ public class HomeController {
 		return "view-users";
 		
 	}
+	
+	@GetMapping("/edit/{id}")
+	public String editUser(@PathVariable Integer id, Model model)  
+	{
+		UserAccount userAcc=	service.getUserAcc(id);
+		
+		model.addAttribute("user", userAcc); 
+		//System.out.println(id);
+		return "index";
+		
+	}
+	
+
+	
+	@GetMapping("/delete/{id}")
+	public String deleteUserAccount(@PathVariable("id") Integer id,Model model)
+	{
+		service.deleteUserAcc(id);
+		List<UserAccount> userList = service.getAllUserAccount();
+		model.addAttribute("users", userList);
+		return "view-users";
+	}
+	
+	
 	
 }
