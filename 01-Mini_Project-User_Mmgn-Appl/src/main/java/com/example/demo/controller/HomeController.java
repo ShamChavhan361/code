@@ -57,6 +57,7 @@ public class HomeController {
 		System.out.println(user);
 		String msg = service.saveOrUpdateUserAcc(user);
 		model.addAttribute("msg", msg);
+		model.addAttribute("user", new UserAccount());
 		return "index";
 		
 	}
@@ -86,18 +87,27 @@ public class HomeController {
 
 	
 	@GetMapping("/delete/{id}")
-	public String deleteUserAccount(@PathVariable("id") Integer id)
+	public String deleteUserAccount(@PathVariable("id") Integer id,Model model)
 	{
 		service.deleteUserAcc(id);
-		return "redirect:/view";
+		model.addAttribute("msg", "Record Deleted ");
+		return "forward:/view";
 	}
 	
 	@GetMapping("/update")
-	public String statusUpdate(@RequestParam("id") Integer uid, @RequestParam("status") String status)
+	public String statusUpdate(@RequestParam("id") Integer uid, @RequestParam("status") String status, Model model)
 	{
 		
 		service.updateUserAccStatus(uid, status);
-		return "redirect:/view";
+		if(status.equals("Y"))
+		{
+			model.addAttribute("msg", "User Account Activated");
+		}
+		else
+		{
+			model.addAttribute("msg", "User Account De-Activated");
+		}
+		return "forward:/view";
 		
 	}
 	

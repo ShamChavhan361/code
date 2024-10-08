@@ -43,8 +43,9 @@
 				<table>
 					<tr>
 					<td> Full Name : </td>
-					<td><input type="text" th:field="*{fullName}"/></td>
+					<td><input type="text" th:field="*{fullName}" required/></td>
 					<input type="hidden" th:field="*{userId}"/>
+					<input type="hidden" th:field="*{activeSw}"/>
 					</tr>
 					
 					<tr>
@@ -54,17 +55,17 @@
 					
 					<tr>
 					<td> Phone No. : </td>
-					<td><input type="number" th:field="*{phno}"/></td>
+					<td><input type="number" th:field="*{phno}" required /></td>
 					</tr>
 					
 					<tr>
 					<td> SSN </td>
-					<td><input type="number" th:field="*{ssn}"/></td>
+					<td><input type="number" th:field="*{ssn}" required/></td>
 					</tr>
 
 					<tr>
 					<td> DOB </td>
-					<td><input type="date" th:field="*{dob}"/></td>
+					<td><input type="date" th:field="*{dob}" required/></td>
 					</tr>
 					
 					<tr>

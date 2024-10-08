@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,11 +27,14 @@ public class UserAccount {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
 	private Long ssn;
-	private String activeSw = "Y";
+	private String activeSw;
 	
 	@CreationTimestamp
+	@Column(updatable  = false)
 	private LocalDate createdDate;
+	
 	@UpdateTimestamp
+	@Column(insertable = false)
 	private LocalDate updatedDate;
 	
 	

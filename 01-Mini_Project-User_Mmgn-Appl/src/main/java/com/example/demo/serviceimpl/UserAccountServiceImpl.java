@@ -25,10 +25,14 @@ public class UserAccountServiceImpl implements UserAccountService {
 		Integer userId = userAcc.getUserId();
 		
 		//method which is used to  Save or Update record is called as UPSERT method
-		 userRepo.save(userAcc);
+		 
 		
+	if(userId == null)
+	{
+		userAcc.setActiveSw("Y");
+	}
 	
-	
+	userRepo.save(userAcc);
 		
 		if(userId!=null)
 		{
