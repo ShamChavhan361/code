@@ -73,10 +73,10 @@
 
 					<span th:switch="${user.activeSw}">
 					 <i th:case="Y"class="fas fa-check red-text"> 
-					 <td>     <a href="#" class="btn btn-danger">De-Activate</a></td>
+					 <td>     <a th:href="@{/update?(id=${user.userId}, status=N)}" class="btn btn-danger">De-Activate</a></td>
 					 </i> 
 					 <i th:case="N" class="fas fa-times orange-text">
-					 <td>     <a href="#" class="btn btn-success">Activate</a></td>
+					 <td>     <a th:href="@{/update?(id=${user.userId}, status=Y)}" class="btn btn-success">Activate</a></td>
 					 </i>
 					</span>
 

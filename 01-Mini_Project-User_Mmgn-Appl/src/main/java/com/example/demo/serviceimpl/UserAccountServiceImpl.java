@@ -22,19 +22,21 @@ public class UserAccountServiceImpl implements UserAccountService {
 	@Override
 	public String saveOrUpdateUserAcc(UserAccount userAcc) {
 		
-	
+		Integer userId = userAcc.getUserId();
+		
 		//method which is used to  Save or Update record is called as UPSERT method
 		 userRepo.save(userAcc);
 		
-		Integer userId = userAcc.getUserId();
+	
+	
 		
-		if(userId==null)
+		if(userId!=null)
 		{
-			return "Record will be submitted";
+			return " User Account Updated";
 		}
 		else
 		{
-			return "User Account Updated";
+			return "Record submitted";
 		}
 		
 		

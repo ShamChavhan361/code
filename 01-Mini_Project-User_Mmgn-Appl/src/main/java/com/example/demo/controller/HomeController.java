@@ -86,14 +86,19 @@ public class HomeController {
 
 	
 	@GetMapping("/delete/{id}")
-	public String deleteUserAccount(@PathVariable("id") Integer id,Model model)
+	public String deleteUserAccount(@PathVariable("id") Integer id)
 	{
 		service.deleteUserAcc(id);
-		List<UserAccount> userList = service.getAllUserAccount();
-		model.addAttribute("users", userList);
-		return "view-users";
+		return "redirect:/view";
 	}
 	
-	
+	@GetMapping("/update")
+	public String statusUpdate(@RequestParam("id") Integer uid, @RequestParam("status") String status)
+	{
+		
+		service.updateUserAccStatus(uid, status);
+		return "redirect:/view";
+		
+	}
 	
 }
