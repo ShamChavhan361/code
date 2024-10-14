@@ -57,6 +57,8 @@ public class HomeController {
 		System.out.println(user);
 		String msg = service.saveOrUpdateUserAcc(user);
 		model.addAttribute("msg", msg);
+		
+		//send empty binding object after form submitted 
 		model.addAttribute("user", new UserAccount());
 		return "index";
 		
@@ -91,6 +93,7 @@ public class HomeController {
 	{
 		service.deleteUserAcc(id);
 		model.addAttribute("msg", "Record Deleted ");
+		 
 		return "forward:/view";
 	}
 	
