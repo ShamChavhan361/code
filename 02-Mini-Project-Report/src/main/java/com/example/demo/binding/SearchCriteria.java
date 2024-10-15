@@ -2,6 +2,8 @@ package com.example.demo.binding;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SearchCriteria {
 	
 	
@@ -11,8 +13,10 @@ public class SearchCriteria {
 	
     private String gender;
     
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate planStartDate;
     
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate planEndDate;
 
 	public String getPlanName() {

@@ -2,6 +2,8 @@ package com.example.demo.Entity;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,8 +31,10 @@ public class CitizenPlan {
 	
 	private String planStatus;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate planStartDate;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate planEndDate;
 
 	public CitizenPlan() {
