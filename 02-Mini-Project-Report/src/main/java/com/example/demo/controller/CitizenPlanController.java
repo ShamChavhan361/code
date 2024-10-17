@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.Entity.CitizenPlan;
 import com.example.demo.binding.SearchCriteria;
 import com.example.demo.service.CitizenPlanService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class CitizenPlanController {
@@ -68,4 +72,30 @@ public class CitizenPlanController {
 	    model.addAttribute("status", planStatus);
 	}
 
+	
+	@GetMapping("/excel")
+	public void downloadExcel(HttpServletResponse response) throws IOException
+	{
+		response.setContentType("application/octet-stream");
+		
+		String headerKey="Content-Disposition";
+		String headerValue="attachment;filename=data.xls";
+		
+		response.addHeader(headerKey, headerValue);
+		
+		service.geneareExcel(response);
+	}
+	
+	@GetMapping("/pdf")
+	public void downloadPdf(HttpServletResponse response) throws IOException
+	{
+		response.setContentType("application/pdf");
+		
+		String headerKey="Content-Disposition";
+		String headerValue="attachment;filename=data.pdf";
+		
+		response.addHeader(headerKey, headerValue);
+		
+		service.generatePdf(response);
+	}
 }

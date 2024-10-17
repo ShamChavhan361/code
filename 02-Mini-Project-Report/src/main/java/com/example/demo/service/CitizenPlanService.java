@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.example.demo.Entity.CitizenPlan;
@@ -16,9 +17,9 @@ public interface CitizenPlanService {
 	
 	public List<CitizenPlan> searchCitizen(SearchCriteria critetia);
 	
-	public void geneareExcel(HttpServletResponse response);
+	public void geneareExcel(HttpServletResponse response) throws IOException;
 	
-	public void generatePdf(HttpServletResponse response);
+	public void generatePdf(HttpServletResponse response) throws IOException;
 	
 	
 
